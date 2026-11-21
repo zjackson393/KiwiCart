@@ -75,7 +75,11 @@ accuracy and route load-time testing.
 
 ## Licence
 
-MIT, see `LICENSE`.
+[PolyForm Noncommercial 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0),
+see `LICENSE`. The code is free to read, run and modify for non-commercial
+purposes (study, research, personal projects, education); commercial use is
+not permitted. Note this is a source-available licence, not an OSI-approved
+open-source one.
 
 ## Security notes
 
