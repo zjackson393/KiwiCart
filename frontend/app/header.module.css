@@ -1,0 +1,120 @@
+.header {
+    background-color: var(--kcGreenDark);
+    color: var(--kcCreamLight);
+    height: 52px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 var(--app-gutter, 16px);
+    justify-content: space-between;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo {
+    border-radius: 8px;
+}
+
+.kiwicart {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: var(--kcCreamLight);
+}
+
+.profileContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.profileButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s ease;
+}
+
+.profileButton:hover {
+    transform: scale(1.06);
+}
+
+.profileCircle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--kcCreamLight);
+    color: var(--kcGreenDark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+}
+
+.dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background-color: var(--surface, #fff);
+    border: 1px solid var(--border, var(--hairline, rgba(32, 58, 20, 0.12)));
+    border-radius: 12px;
+    min-width: 180px;
+    box-shadow: 0 8px 24px rgba(32, 58, 20, 0.14);
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.dropdownHeader {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border, var(--hairline, rgba(32, 58, 20, 0.12)));
+    color: var(--ink, var(--kcGreenDark));
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.dropdownItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 11px 14px;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    color: var(--ink, var(--kcGreenDark));
+    font-size: 13px;
+    font-family: inherit;
+    transition: background-color 0.15s ease;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.dropdownItem:hover {
+    background-color: var(--surface-alt, var(--kcCreamLight));
+}
+
+.dropdownItem:last-child {
+    color: var(--nwRed);
+    border-top: 1px solid var(--border, var(--hairline, rgba(32, 58, 20, 0.12)));
+}
+
+.dropdownItem:last-child:hover {
+    background-color: rgba(208, 49, 50, 0.06);
+}

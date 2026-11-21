@@ -1,0 +1,28 @@
+/* Sign-in CTA */
+.btnGoogle {
+  background: var(--color-kcGreenDark);
+  color: var(--color-kcCreamLight);
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: transform 120ms ease, background-color 120ms ease;
+  line-height: 1;
+}
+
+.btnGoogle:hover { background: var(--color-kcGreenMid); transform: translateY(-2px); }
+.btnGoogle:focus { outline: none; box-shadow: 0 0 0 4px var(--color-kcGreenLight); }
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  flex: 0 0 1.25rem;
+  font-size: 0.75rem;
+  line-height: 1;
+}

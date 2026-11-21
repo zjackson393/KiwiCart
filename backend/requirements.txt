@@ -1,0 +1,28 @@
+# NOTE: the original project installed `nz-supermarket-scraper` from a private
+# university-hosted package index, which is not publicly available. See the
+# "Private dependency" section of the top-level README.
+# --extra-index-url <private package index>
+
+fastapi[standard]==0.139.2
+duckdb==1.5.4
+pandas==3.0.5
+pydantic==2.13.4
+uvicorn==0.51.0
+sqlalchemy==2.0.51
+alembic==1.18.5
+psycopg2-binary==2.9.12
+httpx==0.28.1
+authlib==1.7.2
+itsdangerous==2.2.0
+PyJWT==2.13.0
+brotlipy==0.7.0
+fsspec==2026.6.0
+resend==2.16.0
+apscheduler==3.11.3
+pyiceberg[sql-postgres,pyarrow,s3fs]==0.11.1
+# nz-supermarket-scraper==1.2.0   # private package (not publicly available)
+
+
+# ── Dev / test only ───────────────────────────────────────────────────────────
+pytest==9.1.1
+pytest-mock==3.15.1

@@ -1,0 +1,108 @@
+.rail {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0;
+    padding: 12px 12px 10px;
+    background-color: var(--page-bg, var(--kcCreamLight));
+    border-bottom: 1px solid var(--border, var(--hairline, rgba(32, 58, 20, 0.12)));
+}
+
+.stepWrap {
+    display: flex;
+    align-items: center;
+}
+
+.link {
+    text-decoration: none;
+    color: inherit;
+    cursor: default;
+}
+
+a.link {
+    cursor: pointer;
+}
+
+.node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 56px;
+}
+
+.dot {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--surface-alt, var(--kcCreamMedium));
+    color: var(--ink, var(--kcGreenDark));
+    border: 1.5px solid transparent;
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.label {
+    font-size: 0.63rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--ink-muted, var(--kcGreenMidText, #3C6B29));
+    text-transform: uppercase;
+}
+
+.active .dot {
+    background-color: var(--kcGreenDark);
+    color: var(--kcCreamLight);
+    transform: scale(1.1);
+    box-shadow: 0 0 0 4px rgba(32, 58, 20, 0.12);
+}
+
+.active .label {
+    opacity: 1;
+}
+
+.done .dot {
+    background-color: transparent;
+    color: var(--kcGreenMid);
+    border-color: var(--kcGreenMid);
+}
+
+.done .label {
+    opacity: 0.75;
+}
+
+a.link:hover .dot {
+    transform: scale(1.05);
+}
+
+.upcoming .dot {
+    opacity: 0.5;
+}
+
+.connector {
+    width: 22px;
+    height: 1.5px;
+    background-color: var(--ink, var(--kcGreenDark));
+    opacity: 0.15;
+    margin: 0 2px;
+    margin-bottom: 17px;
+}
+
+.connectorDone {
+    opacity: 0.5;
+    background-color: var(--kcGreenMid);
+}
+
+@media (max-width: 480px) {
+    .node {
+        width: 46px;
+    }
+    .connector {
+        width: 12px;
+    }
+    .label {
+        font-size: 0.56rem;
+    }
+}

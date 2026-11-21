@@ -1,0 +1,272 @@
+@import "tailwindcss";
+
+:root {
+    --kcCreamLight: #F6F2E8;
+    --kcCreamMedium: #E5DDB9;
+    --kcGreenDark: #203A14;
+    --kcGreenMid: #528A39;
+    --kcGreenLight: #71B651;
+    --kcBrown: #75512F;
+    --nwRed: #D03132;
+    --psYellow: #F9D949;
+    --wwGreen: #3A5F3E;
+
+    scrollbar-gutter: stable;
+}
+
+@theme {
+    --color-kcCreamLight: #F6F2E8;
+    --color-kcCreamMedium: #E5DDB9;
+    --color-kcGreenDark: #203A14;
+    --color-kcGreenMid: #528A39;
+    --color-kcGreenLight: #71B651;
+    --color-kcBrown: #75512F;
+    --color-nwRed: #D03132;
+    --color-psYellow: #F9D949;
+    --color-wwGreen: #3A5F3E;
+}
+
+@theme inline {
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
+    /* Semantic tokens as Tailwind utilities (bg-ink, text-surface, etc.) so
+     pages built with Tailwind classes (sign-in, trip-complete) can use
+     dark: without needing a full CSS-module rewrite. These resolve to
+     whatever --ink/--surface/etc currently are, so they already track
+     the light/dark values defined below. */
+    --color-ink: var(--ink);
+    --color-ink-muted: var(--ink-muted);
+    --color-surface: var(--surface);
+    --color-surface-alt: var(--surface-alt);
+    --color-page-bg: var(--page-bg);
+}
+
+/* Drives the dark: variant from our own data-theme attribute (set by
+   lib/theme.ts) instead of Tailwind's default media-query-only dark mode,
+   so the explicit Light/Dark/System picker in Settings actually works. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root {
+    /* Mobile-first app frame: content stays inside a phone-width column even
+     on desktop, so the whole product reads as "an app", not a website. */
+    --app-max-width: 460px;
+    --app-gutter: 16px;
+    --surface-radius: 20px;
+    --surface-radius-sm: 14px;
+    --hairline: rgba(32, 58, 20, 0.12);
+    --page-max-width: 1100px;
+
+    /* Height the confirm bar occupies at the bottom of the viewport when
+       visible (bar height + its own bottom offset). Both the mobile
+       drawer and the desktop side panel size themselves around this one
+       number so they never need to guess. */
+    --confirm-bar-space: 38px;
+
+    /* Semantic theme tokens. Brand colours (kcGreenDark, kcGreenMid, the
+     retailer colours) stay constant across themes since they're used for
+     recognisable accents like the header and buttons. These tokens are
+     what flip between light and dark: body text ("ink"), card/page
+     backgrounds ("surface"), and borders. */
+    --ink: var(--kcGreenDark);
+    --ink-muted: #3C6B29;
+    /* Alias for --ink-muted kept for older fallback chains scattered
+       across module CSS (var(--ink-muted, var(--kcGreenMidText, ...))).
+       Remove once those chains are simplified down to just --ink-muted. */
+    --kcGreenMidText: #3C6B29;
+    --surface: #ffffff;
+    --surface-alt: var(--kcCreamLight);
+    --page-bg: var(--kcCreamLight);
+    --border: var(--hairline);
+    --skeleton-base: #E5DDB9;
+    --skeleton-highlight: #F7F5F0;
+}
+
+/* Follow the OS preference by default, unless the user picked a theme
+   explicitly (data-theme is then set on <html> and wins outright below). */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --ink: #EAF3E4;
+        --ink-muted: #A9C79A;
+        --kcGreenMidText: #A9C79A;
+        --surface: #1E2A18;
+        --surface-alt: #17200F;
+        --page-bg: #10160C;
+        --border: rgba(234, 243, 228, 0.14);
+        --hairline: rgba(234, 243, 228, 0.14);
+        --skeleton-base: #2A3420;
+        --skeleton-highlight: #364229;
+    }
+}
+
+[data-theme="dark"] {
+    --ink: #EAF3E4;
+    --ink-muted: #A9C79A;
+    --kcGreenMidText: #A9C79A;
+    --surface: #1E2A18;
+    --surface-alt: #17200F;
+    --page-bg: #10160C;
+    --border: rgba(234, 243, 228, 0.14);
+    --hairline: rgba(234, 243, 228, 0.14);
+    --skeleton-base: #2A3420;
+    --skeleton-highlight: #364229;
+}
+
+/* Firefox doesn't reliably re-fire prefers-color-scheme changes live —
+   ThemeSync.tsx mirrors matchMedia into this class via JS as a fallback
+   so "system" mode still updates without a reload. */
+:root.system-dark:not([data-theme="light"]) {
+    --ink: #EAF3E4;
+    --ink-muted: #A9C79A;
+    --kcGreenMidText: #A9C79A;
+    --surface: #1E2A18;
+    --surface-alt: #17200F;
+    --page-bg: #10160C;
+    --border: rgba(234, 243, 228, 0.14);
+    --hairline: rgba(234, 243, 228, 0.14);
+    --skeleton-base: #2A3420;
+    --skeleton-highlight: #364229;
+}
+
+body {
+    background: var(--page-bg);
+    color: var(--ink);
+    font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+.material-symbols-rounded {
+    font-family: "Material Symbols Rounded";
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: "liga";
+    font-feature-settings: "liga";
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Shared mobile app shell: every page's top-level content sits inside this
+   so the UI is consistently phone-width, centered, with a hairline edge on
+   wider viewports instead of stretching full-bleed. */
+.appShell {
+    width: 100%;
+    max-width: var(--app-max-width);
+    margin: 0 auto;
+}
+
+@media (min-width: 540px) {
+    .appShell {
+        border-left: 1px solid var(--border, var(--hairline));
+        border-right: 1px solid var(--border, var(--hairline));
+    }
+}
+
+@media (min-width: 900px) {
+    .appShell.shellWide {
+        max-width: var(--page-max-width);
+    }
+}
+
+/* Above phone/tablet width there's real space around the app column. A
+   flat white page with a narrow strip of content in the middle read as
+   unfinished, so desktop gets a soft brand-toned backdrop and the app
+   itself becomes a floating, rounded, shadowed card instead of a plain
+   bordered strip. */
+@media (min-width: 900px) {
+    html {
+        height: 100%;
+        overflow: hidden;
+    }
+
+    body {
+        background: var(--surface-alt, var(--kcCreamMedium));
+    }
+
+    .appShell {
+        margin: 32px auto;
+        height: calc(100dvh - 64px);
+        overflow: hidden;
+        border-radius: var(--surface-radius, 20px);
+        box-shadow: 0 30px 80px rgba(16, 22, 12, 0.16), 0 2px 10px rgba(16, 22, 12, 0.08);
+        background-color: var(--page-bg);
+    }
+
+    .appShellHeader {
+        flex-shrink: 0;
+    }
+
+    .appShellScroll {
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow-y: auto;
+
+        scrollbar-width: thin;
+        scrollbar-color: var(--kcGreenMid) transparent;
+    }
+}
+
+.confirmBar {
+    position: fixed;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 100%);
+    width: 100%;
+    max-width: var(--app-max-width, 460px);
+    background-color: var(--kcGreenDark);
+    color: var(--kcCreamLight);
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    transition: transform 0.3s ease;
+    z-index: 40;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.18);
+    box-sizing: border-box;
+}
+
+.confirmBarVisible {
+    transform: translate(-50%, 0);
+}
+
+.confirmText {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--kcCreamLight);
+}
+
+.confirmBtn {
+    appearance: none;
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: var(--kcGreenLight);
+    color: var(--ink, var(--kcGreenDark));
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 9px 18px;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.confirmBtn:hover:not(:disabled) {
+    background-color: var(--surface, #fff);
+}
+
+.confirmBtn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+@media (min-width: 900px) {
+    .confirmBar {
+        max-width: var(--page-max-width);
+        bottom: 32px;
+        border-radius: 14px;
+    }
+}

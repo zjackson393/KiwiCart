@@ -1,0 +1,245 @@
+.content {
+    padding: 4px 2px 2px;
+}
+
+.section {
+    background-color: var(--surface-alt, var(--kcCreamLight));
+    border: 1px solid var(--border, var(--hairline, rgba(32, 58, 20, 0.12)));
+    border-radius: 12px;
+    padding: 13px 14px;
+    margin-bottom: 10px;
+}
+
+.section:last-child {
+    margin-bottom: 0;
+}
+
+.sectionHeaderRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sectionTitle {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--ink, var(--kcGreenDark));
+    margin: 0 0 9px;
+}
+
+.changeLink {
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: var(--ink, var(--kcGreenDark));
+    text-decoration: underline;
+}
+
+.mutedText {
+    font-size: 0.76rem;
+    color: var(--ink-muted, var(--kcGreenMidText, #3C6B29));
+    line-height: 1.45;
+    margin: 0;
+}
+
+.accountRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: var(--kcGreenDark);
+    color: var(--kcCreamLight);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+}
+
+.accountName {
+    font-weight: 700;
+    font-size: 0.84rem;
+    color: var(--ink, var(--kcGreenDark));
+}
+
+.accountEmail {
+    font-size: 0.72rem;
+    color: var(--ink-muted, var(--kcGreenMidText, #3C6B29));
+}
+
+/* ── Appearance ───────────────────────────────────────────────────────── */
+
+.themeRow {
+    display: flex;
+    gap: 6px;
+}
+
+.themeBtn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 9px 6px;
+    background-color: var(--surface, #fff);
+    border: 1.5px solid transparent;
+    border-radius: 9px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--ink, var(--kcGreenDark));
+    cursor: pointer;
+}
+
+.themeBtn:hover {
+    border-color: var(--kcGreenMid);
+}
+
+.themeBtnActive {
+    border-color: var(--kcGreenDark);
+    background-color: var(--kcGreenDark);
+    color: var(--kcCreamLight);
+}
+
+/* ── Locations (stores + starting location) ─────────────────────────── */
+
+.locationsGroup {
+    margin-top: 10px;
+}
+
+.locationsGroup:first-of-type {
+    margin-top: 0;
+}
+
+.locationsLabel {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--ink-muted, var(--kcGreenMidText, #3C6B29));
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 6px;
+}
+
+/* ── Stores ──────────────────────────────────────────────────────────── */
+
+.storeList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.storeRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 7px 9px;
+    background-color: var(--surface, #fff);
+    border-radius: 7px;
+}
+
+.storeName {
+    font-weight: 700;
+    font-size: 0.78rem;
+    color: var(--ink, var(--kcGreenDark));
+}
+
+.storeRetailer {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--ink-muted, var(--kcGreenMidText, #3C6B29));
+}
+
+.storeOverflowText {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--ink-muted, var(--kcGreenMidText, #3C6B29));
+    margin: 5px 0 0;
+    padding: 0 9px;
+}
+
+.storeDot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* ── Loyalty programmes ──────────────────────────────────────────────── */
+
+.loyaltyList {
+    list-style: none;
+    margin: 8px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.loyaltyRow {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 10px;
+    background-color: var(--surface, #fff);
+    border-radius: 9px;
+}
+
+.loyaltyInfo {
+    flex: 1;
+    min-width: 0;
+}
+
+.loyaltyProgram {
+    font-weight: 700;
+    font-size: 0.78rem;
+    color: var(--ink, var(--kcGreenDark));
+}
+
+.loyaltyOperator {
+    font-size: 0.68rem;
+    color: var(--ink-muted, var(--kcGreenMidText, #3C6B29));
+}
+
+.toggle {
+    width: 36px;
+    height: 21px;
+    border-radius: 999px;
+    background-color: var(--border, rgba(32, 58, 20, 0.2));
+    border: none;
+    position: relative;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color 0.15s ease;
+}
+
+.toggleOn {
+    background-color: var(--kcGreenMid);
+}
+
+.toggleKnob {
+    position: absolute;
+    top: 2.5px;
+    left: 2.5px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #fff;
+    transition: transform 0.15s ease;
+}
+
+.toggleOn .toggleKnob {
+    transform: translateX(15px);
+}

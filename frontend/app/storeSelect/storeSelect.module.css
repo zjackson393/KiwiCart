@@ -1,0 +1,350 @@
+.wrap {
+    padding: 8px var(--app-gutter, 16px) 110px;
+}
+
+.mapSection {
+    padding: 0 var(--app-gutter, 16px);
+    margin-bottom: 16px;
+}
+
+.searchWrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 12px;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 10px 12px 10px 38px;
+    border: 1px solid var(--border, var(--hairline, rgba(32, 58, 20, 0.12)));
+    border-radius: 12px;
+    font-size: 0.88rem;
+    color: var(--ink, var(--kcGreenDark));
+    background-color: var(--surface, #fff);
+    outline: none;
+    box-sizing: border-box;
+}
+
+.searchInput:focus {
+    border-color: var(--kcGreenMid);
+}
+
+.retailerGroup {
+    margin-bottom: 12px;
+}
+
+.retailerHeading {
+    appearance: none;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    border: 1px solid var(--border, var(--hairline, rgba(32, 58, 20, 0.12)));
+    border-radius: 12px;
+    background-color: var(--surface-alt, var(--kcCreamLight));
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+    font-family: inherit;
+    transition: border-color 0.12s ease, background-color 0.12s ease;
+}
+
+.retailerHeading:hover {
+    border-color: var(--kcGreenMid);
+}
+
+.retailerHeadingOpen {
+    border-color: var(--kcGreenDark);
+}
+
+.retailerChevron {
+    margin-left: auto;
+    transition: transform 0.18s ease;
+}
+
+.retailerChevronOpen {
+    transform: rotate(180deg);
+}
+
+.retailerPanel {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: grid-template-rows 0.24s ease, opacity 0.18s ease;
+}
+
+.retailerPanelOpen {
+    grid-template-rows: 1fr;
+    opacity: 1;
+}
+
+.retailerPanelInner {
+    overflow: hidden;
+}
+
+.storeDot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.retailerName {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--ink, var(--kcGreenDark));
+    margin: 0;
+}
+
+.retailerCount {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--ink-muted, var(--kcGreenMidText, #3C6B29));
+    background-color: var(--surface-alt, var(--kcCreamLight));
+    border-radius: 999px;
+    padding: 1px 8px;
+}
+
+.storeList {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.storeCard {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 14px;
+    background-color: var(--surface, #fff);
+    border: 1px solid var(--border, var(--hairline, rgba(32, 58, 20, 0.12)));
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    transition: border-color 0.12s ease, background-color 0.12s ease;
+}
+
+.storeCard:hover {
+    border-color: var(--kcGreenMid);
+}
+
+.storeCardSelected {
+    border-color: var(--kcGreenDark);
+    background-color: var(--surface-alt, var(--kcCreamLight));
+}
+
+.storeCardOutOfRadius {
+    opacity: 0.55;
+    filter: grayscale(0.6);
+}
+
+.storeName {
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--ink, var(--kcGreenDark));
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.checkCircle {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid var(--border, rgba(32, 58, 20, 0.25));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.storeCardSelected .checkCircle {
+    background-color: var(--kcGreenDark);
+    border-color: var(--kcGreenDark);
+}
+
+.emptyState {
+    font-size: 0.85rem;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--ink-muted, var(--kcGreenMidText, #3C6B29));
+}
+
+.startSection {
+    padding: 0 var(--app-gutter, 16px);
+    margin-bottom: 20px;
+}
+
+.startHeading {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--ink, var(--kcGreenDark));
+    margin: 0 0 8px;
+}
+
+.startSummary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 14px;
+    background-color: var(--surface-alt, var(--kcCreamLight));
+    border: 1px solid var(--border, var(--hairline, rgba(32, 58, 20, 0.12)));
+    border-radius: 12px;
+}
+
+.startSummaryText {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--ink, var(--kcGreenDark));
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.changeBtn {
+    appearance: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--kcGreenMid);
+    padding: 4px 8px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    transition: background-color 0.12s ease;
+}
+
+.changeBtn:hover {
+    background-color: var(--surface, #fff);
+}
+
+.startCard {
+    background-color: var(--surface, #fff);
+    border: 1px solid var(--border, var(--hairline, rgba(32, 58, 20, 0.12)));
+    border-radius: 12px;
+    padding: 14px;
+}
+
+/* Desktop layout: opt out of the app-wide phone-width cap so retailer
+   groups can lay out as columns instead of one long list. */
+
+@media (min-width: 900px) {
+    .wrap {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .retailerGroup {
+        margin-bottom: 16px;
+    }
+
+    .storeList {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+}
+
+.selectionActions {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.selectionActions .changeBtn {
+    width: 120px;
+    text-align: center;
+}
+
+.radiusRow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.radiusLabel {
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.radiusSlider {
+    flex: 1;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    border-radius: 3px;
+    background: linear-gradient(
+        to right,
+        var(--radius-track-fill) var(--radius-fill-percent),
+        var(--radius-track-bg) var(--radius-fill-percent)
+    );
+    outline: none;
+    cursor: pointer;
+}
+
+.radiusSlider:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.radiusSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--radius-thumb-bg);
+    border: 3px solid var(--radius-thumb-border);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.radiusSlider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--radius-thumb-bg);
+    border: 3px solid var(--radius-thumb-border);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.radiusSlider::-moz-range-track {
+    height: 6px;
+    border-radius: 3px;
+    background: var(--radius-track-bg);
+}
+
+.radiusSlider::-moz-range-progress {
+    height: 6px;
+    border-radius: 3px;
+    background: var(--radius-track-fill);
+}

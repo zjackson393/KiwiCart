@@ -1,0 +1,9 @@
+[tool.fastapi]
+entrypoint = "app.main:app"
+
+[tool.black]
+line-length = 100
+skip-string-normalization = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,52 @@
+.wrap {
+    padding: 14px var(--app-gutter, 16px) 6px;
+}
+
+.backBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    padding: 4px 0 10px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--ink-muted, var(--kcGreenMidText, #3C6B29));
+    cursor: pointer;
+}
+
+.backBtn:hover {
+    color: var(--ink, var(--kcGreenDark));
+}
+
+.titleRow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.iconBadge {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background-color: var(--surface-alt, var(--kcCreamLight));
+    color: var(--ink, var(--kcGreenDark));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--ink, var(--kcGreenDark));
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 0.82rem;
+    color: var(--ink-muted, var(--kcGreenMidText, #3C6B29));
+    margin: 2px 0 0;
+    line-height: 1.4;
+}

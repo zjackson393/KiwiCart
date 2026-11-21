@@ -1,0 +1,113 @@
+stages:
+  - test
+  - deploy
+
+### Environment Setup ###
+
+.node_env:
+  image: node:24
+  tags:
+    - docker
+  before_script:
+    - cd frontend
+    - corepack enable
+    - corepack prepare pnpm@latest --activate
+    - pnpm install --frozen-lockfile
+
+    - export VERCEL_GIT_COMMIT_REF="$CI_COMMIT_BRANCH"
+    - export VERCEL_GIT_COMMIT_SHA="$CI_COMMIT_SHA"
+    - export VERCEL_GIT_COMMIT_MESSAGE="$CI_COMMIT_MESSAGE"
+
+.python_env:
+  image: python:3.13
+  tags:
+    - docker
+  before_script:
+    - cd backend
+    - python -m venv .venv
+    - source .venv/bin/activate
+    - pip install --upgrade pip
+    - GITLAB_USER="gitlab-ci-token" GITLAB_TOKEN="$CI_JOB_TOKEN" pip install -r requirements.txt
+
+### Hidden stages for reusability ###
+
+.build_vercel:
+  extends: .node_env
+  script:
+    - pnpm --allow-build=esbuild dlx vercel pull --yes --environment="$VERCEL_ENV" --token="$VERCEL_TOKEN"
+    - pnpm --allow-build=esbuild dlx vercel build "$VERCEL_BUILD_FLAGS" --token="$VERCEL_TOKEN"
+
+.deploy_vercel:
+  extends: .node_env
+  script:
+    - pnpm --allow-build=esbuild dlx vercel pull --yes --environment="$VERCEL_ENV" --token="$VERCEL_TOKEN"
+    - pnpm --allow-build=esbuild dlx vercel build "$VERCEL_BUILD_FLAGS" --token="$VERCEL_TOKEN"
+    - pnpm --allow-build=esbuild dlx vercel deploy --yes --prebuilt "$VERCEL_DEPLOY_FLAGS" --token="$VERCEL_TOKEN"
+
+
+### Actual CI/CD pipelines ###
+
+test_backend_unit:
+  stage: test
+  extends: .python_env
+  script:
+    - cp .env.sample .env
+    - pytest -q
+  rules:
+    - changes:
+        - backend/**/*
+      when: on_success
+    - when: never
+
+test_frontend_unit:
+  stage: test
+  extends: .node_env
+  script:
+    - pnpm test
+  rules:
+    - changes:
+        - frontend/**/*
+      when: on_success
+    - when: never
+
+test_build_frontend:
+  stage: test
+  extends: .build_vercel
+  variables:
+    VERCEL_ENV: preview
+    VERCEL_BUILD_FLAGS: ""
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main" || $CI_COMMIT_BRANCH == "dev"
+      when: never
+    - changes:
+        - frontend/**/*
+      when: on_success
+    - when: never
+
+deploy_preview_frontend:
+  stage: deploy
+  extends: .deploy_vercel
+  variables:
+    VERCEL_ENV: preview
+    VERCEL_BUILD_FLAGS: ""
+    VERCEL_DEPLOY_FLAGS: ""
+  rules:
+    - if: $CI_COMMIT_BRANCH == "dev"
+      changes:
+        - frontend/**/*
+      when: on_success
+    - when: never
+
+deploy_production_frontend:
+  stage: deploy
+  extends: .deploy_vercel
+  variables:
+    VERCEL_ENV: production
+    VERCEL_BUILD_FLAGS: --prod
+    VERCEL_DEPLOY_FLAGS: --prod
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+      changes:
+        - frontend/**/*
+      when: on_success
+    - when: never

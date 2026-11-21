@@ -1,0 +1,637 @@
+/* ── Page ────────────────────────────────────────────────────────────────── */
+
+.page {
+    color: var(--ink, var(--kcGreenDark));
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 100px;
+}
+
+/* ── Sub-header ──────────────────────────────────────────────────────────── */
+
+.subHeader {
+    padding: 18px var(--app-gutter, 16px) 4px;
+}
+
+.subHeaderInner {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.subHeaderText {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.pageTitle {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: var(--ink, var(--kcGreenDark));
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.pageSubtitle {
+    font-size: 0.8rem;
+    margin: 0;
+    color: var(--ink, var(--kcGreenDark));
+    opacity: 0.75;
+}
+
+.headerStatus {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    font-size: 0.72rem;
+    color: var(--ink, var(--kcGreenDark));
+    opacity: 0.75;
+    margin-top: 4px;
+}
+
+/* ── Swipe deck ──────────────────────────────────────────────────────────── */
+
+.deckSection {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: 14px;
+}
+
+.deckViewport {
+    position: relative;
+    overflow: hidden;
+    padding: 6px 0 4px;
+    touch-action: pan-y;
+}
+
+.deckTrack {
+    display: flex;
+    cursor: grab;
+}
+
+.deckTrack:active {
+    cursor: grabbing;
+}
+
+.deckSlide {
+    flex-shrink: 0;
+}
+
+.deckSlideInert {
+    pointer-events: none;
+}
+
+.dots {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    padding: 14px 0 4px;
+}
+
+.dot {
+    appearance: none;
+    border: none;
+    padding: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--kcCreamMedium);
+    cursor: pointer;
+    transition: width 0.2s ease, background-color 0.2s ease;
+}
+
+.dotActive {
+    width: 20px;
+    border-radius: 4px;
+    background-color: var(--kcGreenDark);
+}
+
+/* ── Route card ──────────────────────────────────────────────────────────── */
+
+.card {
+    position: relative;
+    background-color: var(--surface, #fff);
+    border-radius: var(--surface-radius, 20px);
+    box-shadow: 0 6px 20px rgba(32, 58, 20, 0.08);
+    padding: 38px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    height: 100%;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+/* ── Accent bar ──────────────────────────────────────────────────────────── */
+
+.cardAccentBar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 32px;
+    border-radius: var(--surface-radius, 20px) var(--surface-radius, 20px) 0 0;
+}
+
+.accentCheapest { background-color: var(--kcGreenLight); }
+.accentQuickest { background-color: var(--kcGreenDark); }
+.accentHybrid   { background-color: var(--kcGreenMid); }
+
+.cardTag {
+    position: absolute;
+    top: 4px;
+    right: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    padding: 3px 8px;
+    border-radius: 20px;
+    color: var(--ink, var(--kcGreenDark));
+    background-color: var(--surface-alt, var(--kcCreamLight));
+}
+
+/* ── Tag pill ────────────────────────────────────────────────────────────── */
+
+/* ── Card header ─────────────────────────────────────────────────────────── */
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.cardIconWrap {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--ink, var(--kcGreenDark));
+    background-color: var(--surface-alt, var(--kcCreamMedium));
+}
+
+.cardIconWrap.accentQuickest {
+    color: var(--ink, var(--kcGreenDark));
+}
+
+.cardTitle {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--ink, var(--kcGreenDark));
+}
+
+.cardTagline {
+    font-size: 0.76rem;
+    margin: 1px 0 0;
+    color: var(--ink, var(--kcGreenDark));
+    opacity: 0.75;
+}
+
+/* ── Card body ───────────────────────────────────────────────────────────── */
+
+.cardBody {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cardLoading,
+.cardError {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: var(--kcBrown);
+    padding: 16px 0;
+}
+
+.cardError {
+    color: var(--nwRed);
+}
+
+/* ── Stats row (shared by card + sheet) ─────────────────────────────────── */
+
+.statsRow {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border, var(--hairline, rgba(32, 58, 20, 0.12)));
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: var(--surface-alt, var(--kcCreamLight));
+}
+
+.stat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 9px 4px;
+    gap: 2px;
+}
+
+.statValue {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--ink, var(--kcGreenDark));
+}
+
+.statLabel {
+    font-size: 0.63rem;
+    color: var(--ink, var(--kcGreenDark));
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.statDivider {
+    width: 1px;
+    height: 28px;
+    background-color: var(--hairline, rgba(32, 58, 20, 0.12));
+    flex-shrink: 0;
+}
+
+/* ── Card actions ────────────────────────────────────────────────────────── */
+
+.cardActions {
+    display: flex;
+    gap: 8px;
+}
+
+.detailsBtn {
+    appearance: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border: 1px solid var(--border, var(--hairline, rgba(32, 58, 20, 0.12)));
+    background: transparent;
+    color: var(--ink, var(--kcGreenDark));
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.78rem;
+    padding: 9px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.selectBtn {
+    appearance: none;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border: none;
+    background: var(--kcGreenDark);
+    color: var(--kcCreamLight);
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.82rem;
+    padding: 9px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.selectBtn:hover {
+    background-color: var(--kcGreenMid);
+}
+
+.cardSelected .selectBtn {
+    background-color: var(--kcGreenMid);
+}
+
+/* ── Detail sheet ────────────────────────────────────────────────────────── */
+
+.sheetBackdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(32, 58, 20, 0.4);
+    z-index: 300;
+}
+
+.sheet {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: var(--app-max-width, 460px);
+    background: var(--page-bg, var(--kcCreamLight));
+    border-radius: 22px 22px 0 0;
+    box-shadow: 0 -8px 32px rgba(32, 58, 20, 0.24);
+    z-index: 301;
+    padding: 8px 16px calc(20px + env(safe-area-inset-bottom, 0px));
+    max-height: 82dvh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-sizing: border-box;
+}
+
+.sheetHandle {
+    width: 36px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--surface-alt, var(--kcCreamMedium));
+    margin: 4px auto 2px;
+    flex-shrink: 0;
+}
+
+.sheetHeader {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sheetTitle {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--ink, var(--kcGreenDark));
+}
+
+.sheetCloseBtn {
+    margin-left: auto;
+    appearance: none;
+    border: none;
+    background: var(--surface-alt, var(--kcCreamMedium));
+    color: var(--ink, var(--kcGreenDark));
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.sheetSelectBtn {
+    appearance: none;
+    border: none;
+    background: var(--kcGreenDark);
+    color: var(--kcCreamLight);
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: background-color 0.15s ease;
+}
+
+.sheetSelectBtn:hover {
+    background-color: var(--kcGreenMid);
+}
+
+/* ── Stop list (inside the sheet) ───────────────────────────────────────── */
+
+.stopList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--surface, #fff);
+    border: 1px solid var(--border, var(--hairline, rgba(32, 58, 20, 0.12)));
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.stopItem {
+    border-bottom: 1px solid var(--hairline, rgba(32, 58, 20, 0.12));
+}
+
+.stopItem:last-child {
+    border-bottom: none;
+}
+
+.stopRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 12px;
+    font-size: 0.85rem;
+    color: var(--ink, var(--kcGreenDark));
+    cursor: pointer;
+    user-select: none;
+}
+
+.stopIndex {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: var(--kcGreenDark);
+    color: var(--kcCreamLight);
+    font-size: 0.7rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.stopInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    flex: 1;
+    min-width: 0;
+}
+
+.stopName {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.stopDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.stopMeta {
+    font-size: 0.72rem;
+    color: var(--ink, var(--kcGreenDark));
+    opacity: 0.75;
+}
+
+.stopChevron {
+    flex-shrink: 0;
+    opacity: 0.5;
+    transition: transform 0.2s ease;
+}
+
+.stopChevronOpen {
+    transform: rotate(180deg);
+}
+
+/* ── Item list (expanded inside a stop) ──────────────────────────────────── */
+
+.itemList {
+    list-style: none;
+    margin: 0;
+    padding: 0 12px 8px 44px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: var(--surface-alt, var(--kcCreamLight));
+}
+
+.itemRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--hairline, rgba(32, 58, 20, 0.12));
+    font-size: 0.9rem;
+    color: var(--ink, var(--kcGreenDark));
+}
+
+.itemRow:last-child {
+    border-bottom: none;
+}
+
+.itemQtyBadge {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--kcCreamLight);
+    background-color: var(--kcGreenMid);
+    padding: 1px 5px;
+    border-radius: 6px;
+    flex-shrink: 0;
+    min-width: 24px;
+    text-align: center;
+}
+
+.itemName {
+    flex: 1;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.itemPrice {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--ink, var(--kcGreenDark));
+    flex-shrink: 0;
+}
+
+/* ── Spinner ─────────────────────────────────────────────────────────────── */
+
+.spinner {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--kcCreamMedium);
+    border-top-color: var(--kcGreenMid);
+    border-radius: 50%;
+    animation: spin 0.75s linear infinite;
+    flex-shrink: 0;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ── Desktop layout ───────────────────────────────────────────────────────
+   Same opt-out of the app-wide phone-width cap used on the grocery list.
+   gives the swipe deck, sub-header, and confirm bar room to breathe
+   instead of squeezing to 460px on a desktop-size screen. */
+@media (min-width: 900px) {
+    .subHeaderInner {
+        max-width: var(--page-max-width);
+        margin: 0 auto;
+    }
+
+    .sheet {
+        max-width: var(--page-max-width);
+        bottom: 32px;
+    }
+}
+
+/* ── Starting-location fallback banner ─────────────────────────────────── */
+
+.startLocationBanner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 8px var(--app-gutter, 16px) 0;
+    padding: 10px 12px;
+    background-color: var(--surface-alt, var(--kcCreamMedium));
+    border: 1px solid var(--border, var(--hairline, rgba(32, 58, 20, 0.12)));
+    border-radius: 10px;
+    font-size: 0.78rem;
+    color: var(--ink, var(--kcGreenDark));
+}
+
+.startLocationLink {
+    font-weight: 700;
+    text-decoration: underline;
+    color: var(--ink, var(--kcGreenDark));
+}
+
+.bannerDismiss {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: var(--ink-muted, var(--kcGreenMidText, #3C6B29));
+    cursor: pointer;
+    padding: 2px;
+    flex-shrink: 0;
+}
+
+.statusText {
+    font-size: inherit;
+    color: inherit;
+}
+
+.lowSavingsBanner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 8px var(--app-gutter, 16px) 0;
+    padding: 10px 12px;
+    background-color: var(--surface-alt, var(--kcCreamMedium));
+    border: 1px solid var(--border, var(--hairline, rgba(32, 58, 20, 0.12)));
+    border-left: 3px solid var(--nwRed);
+    border-radius: 10px;
+    font-size: 0.78rem;
+    color: var(--ink, var(--kcGreenDark));
+}
+
+.lowSavingsBanner strong {
+    font-weight: 700;
+}

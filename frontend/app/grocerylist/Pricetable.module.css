@@ -1,0 +1,52 @@
+/* ── Price table (details panel) ─────────────────── */
+
+.priceTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+    font-size: 0.8rem;
+}
+
+.priceTable thead th {
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--ink-muted, var(--kcGreenMidText));
+    padding: 0 8px 6px 0;
+    border-bottom: 1px solid var(--border, var(--hairline, rgba(32, 58, 20, 0.12)));
+}
+
+.priceTable tbody td {
+    padding: 8px 8px 8px 0;
+    border-bottom: 1px solid var(--border, var(--hairline, rgba(32, 58, 20, 0.12)));
+    color: var(--ink, var(--kcGreenDark));
+    vertical-align: middle;
+}
+
+.priceTable tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.priceTableMuted {
+    color: var(--ink-muted, var(--kcGreenMidText));
+}
+
+.priceTableValue {
+    font-weight: 700;
+    color: var(--ink, var(--kcGreenDark));
+    white-space: nowrap;
+}
+
+/* Narrow the table gracefully on mobile-width cards instead of overflowing */
+@media (max-width: 480px) {
+    .priceTable {
+        font-size: 0.74rem;
+    }
+
+    .priceTable thead th,
+    .priceTable tbody td {
+        padding-right: 4px;
+    }
+}

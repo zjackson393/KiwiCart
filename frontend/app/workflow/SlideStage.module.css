@@ -1,0 +1,36 @@
+.stage {
+    animation: slideInForward 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stage.back {
+    animation-name: slideInBack;
+}
+
+@keyframes slideInForward {
+    from {
+        opacity: 0;
+        transform: translateX(28px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInBack {
+    from {
+        opacity: 0;
+        transform: translateX(-28px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .stage,
+    .stage.back {
+        animation: none;
+    }
+}
